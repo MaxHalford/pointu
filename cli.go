@@ -23,6 +23,7 @@ var (
 	rMin       = flag.Float64("rmin", 1, "Minimum point radius")
 	rMax       = flag.Float64("rmax", 1, "Maximum point radius")
 	withColor  = flag.Bool("color", false, "Use input image color instead of black")
+	verbose    = flag.Bool("verbose", false, "Indicate progress")
 	rng        = rand.New(rand.NewSource(time.Now().UnixNano()))
 )
 
@@ -34,13 +35,21 @@ func main() {
 	// Open the input image
 	img, err := pointu.LoadImage(*inPath)
 	if err != nil {
-		fmt.Printf("Failed to open '%s'\n", *inPath)
+		fmt.Printf("Failed to open image '%s'\n", *inPath)
 		os.Exit(1)
+	}
+	bounds := img.Bounds()
+
+	if *verbose {
+		fmt.Printf("Opened image with shape %s\n", bounds.Max)
 	}
 
 	// Convert it to grayscale
 	gray := pointu.ImageToGray(img)
-	bounds := gray.Bounds()
+
+	if *verbose {
+		fmt.Println("Converted image to grayscale")
+	}
 
 	// Generate initial points by using importance sampling
 	points := pointu.ImportanceSample(*nPoints, gray, uint8(*threshold), rng)
