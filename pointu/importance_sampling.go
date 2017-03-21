@@ -23,9 +23,9 @@ func ImportanceSample(n int, gray *image.Gray, threshold uint8, rng *rand.Rand) 
 	}
 	// Build a roulette wheel
 	var roulette = make([]int, threshold+1)
-	roulette[0] = 256
+	roulette[0] = 256 * len(hist[0])
 	for i := 1; i < len(roulette); i++ {
-		roulette[i] = roulette[i-1] + (256 - i)
+		roulette[i] = roulette[i-1] + (256-i)*len(hist[uint8(i)])
 	}
 	// Run the wheel
 	for i := range pts {
