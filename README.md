@@ -7,7 +7,7 @@ pointu is a tool to render images with points of varying sizes and colors in an 
 1. [Install Go](https://golang.org/doc/install)
 2. Make sure that `$GOPATH` is set and that `$GOPATH/bin` has been added to the global path
 3. Run `go get -u github.com/MaxHalford/pointu`
-4. Run `pointu -help` to make the installation was successful
+4. Run `pointu -help` to check that the installation was successful
 
 ## Examples
 
