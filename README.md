@@ -68,7 +68,7 @@ Run `pointu -h` to get a list of available parameters.
 
 ## Implementation details
 
-Please check out this [blog post](https://maxhalford.github.io/blog/halftoning-2/) for some details on the implementation.
+Please check out this [blog post](https://maxhalford.github.io/blog/halftoning-with-go---part-2/) for some details on the implementation.
 
 ## License
 
